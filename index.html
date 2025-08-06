@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="si">
 <head>
@@ -8,8 +9,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: url('bg.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
       color: white;
       display: flex;
       flex-direction: column;
@@ -21,9 +21,6 @@
     h1 {
       animation: fadeInDown 2s;
       font-size: 2em;
-      background: rgba(0,0,0,0.6);
-      padding: 10px;
-      border-radius: 10px;
     }
     @keyframes fadeInDown {
       from {opacity: 0; transform: translateY(-50px);}
@@ -36,26 +33,18 @@
       border-radius: 5px;
       border: none;
     }
-    input {
-      width: 200px;
-    }
     button {
       background: #ffcc00;
       cursor: pointer;
     }
-    form {
-      background: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 15px;
-    }
   </style>
 </head>
 <body>
-  <h1>🎮 Welcome to Free Fire Gem Store</h1>
+  <h1>Welcome to Free Fire Gem Store</h1>
   <form action="success.html">
     <input type="text" placeholder="Free Fire ID" required><br>
     <input type="text" placeholder="Your Name" required><br>
     <button type="submit">Next</button>
   </form>
 </body>
-</html> 
+</html>
