@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Gems</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #121212;
+      color: white;
+      padding: 20px;
+    }
+    h2 { text-align: center; }
+    .gem {
+      background: #1e1e2f;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .gem:hover {
+      background: #333355;
+    }
+  </style>
+</head>
+<body>
+  <h2>💎 ජෙම් ප්‍රමාණය තෝරන්න</h2>
+  <div class="gem" onclick="selectGem('Jem 100', 100)">💎 Jem 100 - රු.100</div>
+  <div class="gem" onclick="selectGem('Jem 150', 150)">💎 Jem 150 - රු.150</div>
+  <div class="gem" onclick="selectGem('Jem 350', 300)">💎 Jem 350 - රු.300</div>
+  <div class="gem" onclick="selectGem('Jem 500', 400)">💎 Jem 500 - රු.400</div>
+  <div class="gem" onclick="selectGem('Jem 800', 500)">💎 Jem 800 - රු.500</div>
+  <div class="gem" onclick="selectGem('Jem 1000', 800)">💎 Jem 1000 - රු.800</div>
+  <div class="gem" onclick="selectGem('Jem 1500', 1200)">💎 Jem 1500 - රු.1200</div>
+  <div class="gem" onclick="selectGem('Jem 2000', 1500)">💎 Jem 2000 - රු.1500</div>
+
+  <script>
+    function selectGem(name, price) {
+      localStorage.setItem("gemName", name);
+      localStorage.setItem("gemPrice", price);
+      window.location.href = "method.html";
+    }
+  </script>
+</body>
+</html>

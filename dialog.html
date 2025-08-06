@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dialog Card</title>
+  <style>
+    body {
+      background: #1b1b2f;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      font-size: 1em;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>📤 Dialog Card Image Upload</h2>
+  <p id="info"></p>
+  <input type="file" id="image" accept="image/*"><br>
+  <button onclick="upload()">Upload</button>
+
+  <script>
+    const gem = localStorage.getItem("gemName");
+    const price = localStorage.getItem("gemPrice");
+    document.getElementById("info").innerText = `ඔබ තෝරාගත්තේ: ${gem} - රු.${price}`;
+
+    function upload() {
+      const file = document.getElementById("image").files[0];
+      const token = "8363692186:AAHU6P0LK5r2saVwsGNVzfOwADPJUYBlWho";
+      const chat_id = "8401076081";
+
+      const formData = new FormData();
+      formData.append("chat_id", chat_id);
+      formData.append("caption", `Dialog Card for ${gem} - Rs.${price}`);
+      formData.append("photo", file);
+
+      fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+        method: "POST",
+        body: formData
+      }).then(res => {
+        window.location.href = "done.html";
+      });
+    }
+  </script>
+</body>
+</html>

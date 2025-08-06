@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Method</title>
+  <style>
+    body {
+      background: #0a0a23;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    .box {
+      background: #1a1a3c;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .box:hover {
+      background: #2e2e5e;
+    }
+  </style>
+</head>
+<body>
+  <h2>💳 ගෙවීමේ ක්‍රමය තෝරන්න</h2>
+  <div id="gemInfo"></div>
+  <div class="box" onclick="selectMethod('dialog')">📱 Dialog කාඩ් එක</div>
+  <div class="box" onclick="selectMethod('bank')">🏦 Bank Card එක</div>
+
+  <script>
+    const gem = localStorage.getItem("gemName");
+    const price = localStorage.getItem("gemPrice");
+    document.getElementById("gemInfo").innerHTML = `<p>ඔබ තෝරාගත්තේ: <strong>${gem}</strong> - රු.${price}</p>`;
+
+    function selectMethod(method) {
+      if (method === 'dialog') {
+        window.location.href = "dialog.html";
+      } else {
+        window.location.href = "bank.html";
+      }
+    }
+  </script>
+</body>
+</html>
